@@ -1,0 +1,45 @@
+<style>
+
+</style>
+{% extends 'post_detail.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h2 class="blog-post-title">Commenting and Discussion Guidelines</h2>
+      <br>
+      <p>We want you to be a resource for your fellow readers and we hope that you’ll
+        use our comment section to do that. We’ve designed it to elevate and amplify the
+        most intelligent and civil responses, and diminish or hide the worst. These are
+        the rules of the road:
+      </p>
+      <h2 id="stay-on-point.">Stay on point.</h2>
+      <p>When making a comment, don't go off-topic. Don't comment about other
+        commenters or their presumed political beliefs. Discuss the merits of the story
+        itself. Do not post a tome. This is not the place to paste a chapter of your
+        (or anyone else's) dissertation or white paper.
+      </p>
+      <h2 id="be-polite-and-keep-it-clean.">Be polite and keep it clean.</h2>
+      <p>We cover new technologies; our site is not an outlet for rudeness. We do not
+        tolerate personal insults, including name-calling, racism, sexism, hate speech,
+        or obscenity. That means no profane, abusive, harassing, or bullying remarks.
+        If you can't be civil and polite, don't post it.
+      </p>
+      <h2 id="we-read-comments.">We read comments.</h2>
+      <p>Though our discussion boards aren't formally moderated, we do pay close
+        attention to them. We reserve the right to edit or delete comments that do not
+        meet our standards.
+      </p>
+      <p>Thanks for following these guidelines.</p>
+    </div>
+  </div>
+</main>
+<div class="box_comments">
+  <h1>Comment to Post</h1>
+  <form method="POST" class="post-form">{% csrf_token %}
+    {{ form|crispy}}
+    <button class="button" type="submit" class="save btn btn-default">Send</button>
+  </form>
+  {% endblock %}
+</div>
