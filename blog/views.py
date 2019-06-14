@@ -14,7 +14,7 @@ def about(request):
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'index_new.html'
 
 class PostList_ML(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on').filter(tag="ML")
@@ -26,7 +26,7 @@ class PostList_Cloud(generic.ListView):
 
 class PostDetail(generic.DetailView):
     model = Post
-    template_name = 'post_detail.html'
+    template_name = 'post.html'
 
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)

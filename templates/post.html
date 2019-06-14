@@ -1,0 +1,91 @@
+{% extends 'index_new.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="content-wrap" class="blog-single">
+<div class="row">
+   <div class="col-twelve">
+      <article class="format-standard">
+         <div class="content-media">
+            <div class="post-thumb">
+               <img src="{{ post.image.url }}"> 
+            </div>
+         </div>
+         <div class="primary-content">
+            <h1 class="page-title">{{ object.title }}</h1>
+            <ul class="entry-meta">
+               <li class="date">{{ post.created_on }}</li>
+               <li class="cat">| {{ post.author }}</li>
+            </ul>
+            <p class="lead">{{ object.content | safe }}</p>
+            <div class="author-profile">
+				{% if post.author|stringformat:"s" == "Vinayak" %}
+               <img src="{% static '/images/avatars/vinayak.jpg' %}" alt="">
+               <div class="about">
+                  <h4>Vinayak - Write About Yourself</h4>         
+                  <ul class="author-social">
+                     <li><a href="#">Linkedin</a></li>
+					 <li><a href="#">Github</a></li>
+					 
+					 
+                  </ul>
+			   </div>
+			   {% else %}
+			   <img src="{% static '/images/avatars/akshay.jpg' %}" alt="">
+               <div class="about">
+                  <h4>Akshay - Write About Yourself</h4>         
+                  <ul class="author-social">
+                     <li><a href="#">Linkedin</a></li>
+					 <li><a href="#">Github</a></li>
+            </div>
+		 </div>
+		 {% endif %}
+      </article>
+   </div>
+   <!-- end col-twelve -->
+</div>
+<!-- end row -->
+<div class="comments-wrap">
+<div id="comments" class="row">
+<div class="col-full">
+<h3>{{post.comments.count}} Comments</h3>
+<!-- commentlist -->
+<ol class="commentlist">
+   <li class="depth-1">
+      {% for comment in post.comments.all %}
+      <div class="avatar">
+         <img width="50" height="50" class="avatar" src="{% static 'images/avatars/user.png' %}" alt="">
+      </div>
+      <div class="comment-content">
+         <div class="comment-info">
+            <cite>{{ comment.author }}</cite>
+            <div class="comment-meta">
+               <time class="comment-time" datetime="2014-07-12T23:05">{{ comment.created_date }}</time>
+            </div>
+         </div>
+         <div class="comment-text">
+            <p>{{ comment.text|linebreaks }}</p>
+         </div>
+      </div>
+      {% endfor %}
+   </li>
+</ol>
+<!-- Commentlist End -->					
+<!-- respond -->
+<div class="respond">
+   <h3>Leave a Comment</h3>
+   <form name="contactForm" id="contactForm" method="post" action="{% url 'add_comment_to_post' pk=post.pk %}">
+      {% csrf_token %}	
+      <fieldset>
+         <div class="form-field">
+            <input name="author" type="text" required id="id_author" class="full-width" placeholder="Your Name" value="">
+         </div>
+         <div class="message form-field">
+            <textarea name="text" required id="id_text" class="full-width" placeholder="Your Message" ></textarea>
+         </div>
+         <button type="submit" class="submit button-primary">Submit</button>
+      </fieldset>
+   </form>
+   <!-- Form End -->
+</div>
+{% endblock content %}
