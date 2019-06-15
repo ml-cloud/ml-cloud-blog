@@ -13,7 +13,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- CSS
          ================================================== -->
-      <link rel="stylesheet" href="{% static 'CSS/blog.css' %}">
       <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
       <link rel="stylesheet" href="{% static 'CSS/vendor.css' %}">
       <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
@@ -75,11 +74,12 @@
                                  <div class="overlay"></div>
                                  <div class="post-content">
                                     <ul class="entry-meta">
-                                       <li><a href="#" >Nick Bostrom</a></li>
+                                       <li>Nick Bostrom</li>
                                     </ul>
-                                    <i>
+                                   
                                        <h1 class="slide-title">“Machine intelligence is the last invention that humanity will ever need to make.”</h1>
-                                    </i>
+                                       <a href="{% url 'ML' %}"><h5 style="color:rgb(238, 238, 247);"><i><u>See all ML Posts</u></i></h5></a>
+
                                  </div>
                               </div>
                            </li>
@@ -93,6 +93,7 @@
                                        <li>Steve Jobs</li>
                                     </ul>
                                     <h1 class="slide-title">“I don’t need a hard disk in my computer if I can get to the server faster… carrying around these non-connected computers is byzantine by comparison.” </h1>
+                                    <a href="{% url 'Cloud' %}"><h5 style="color:rgb(238, 238, 247);"><i><u>See all Cloud Posts</u></i></h5></a>
                                  </div>
                               </div>
                            </li>
@@ -134,21 +135,31 @@
             <!-- end brick-wrapper --> 
          </div>
          <!-- end row -->
+         
+         {% if is_paginated %}
          <div class="row">
             <nav class="pagination">
+               {% if page_obj.has_previous %}
+               <a href="?page={{ page_obj.previous_page_number }}"><span class="page-numbers prev">Prev</span></a>
+               {% else %}
                <span class="page-numbers prev inactive">Prev</span>
-               <span class="page-numbers current">1</span>
-               <a href="#" class="page-numbers">2</a>
-               <a href="#" class="page-numbers">3</a>
-               <a href="#" class="page-numbers">4</a>
-               <a href="#" class="page-numbers">5</a>
-               <a href="#" class="page-numbers">6</a>
-               <a href="#" class="page-numbers">7</a>
-               <a href="#" class="page-numbers">8</a>
-               <a href="#" class="page-numbers">9</a>
-               <a href="#" class="page-numbers next">Next</a>
+               {% endif %}
+               {% for i in paginator.page_range %}
+               {% if page_obj.number == i %}
+               <span class="page-numbers current">{{ i }}</span>
+               {% else %}
+               <a href="?page={{ i }}"><span class="page-numbers">{{ i }}</span></a>
+               {% endif %}
+               {% endfor %}
+               {% if page_obj.has_next %}
+               <a href="?page={{ page_obj.next_page_number }}" class="page-numbers next">Next</a>
+               {% else %}
+               <span class="page-numbers prev inactive">Next</span>
+               {% endif %}
+               {% endif %}
             </nav>
          </div>
+
       </section>
       <!-- end bricks -->
       {% endblock content %}

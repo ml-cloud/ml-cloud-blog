@@ -3,6 +3,7 @@ from django.views import generic
 from django import forms
 from .models import Post
 from .forms import  CommentForm
+from django.core.paginator import Paginator
 
 def contact(request):
     return render(request,"contact.html")
@@ -14,6 +15,7 @@ def about(request):
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
+    paginate_by = 5
     template_name = 'index_new.html'
 
 class PostList_ML(generic.ListView):
