@@ -3,46 +3,53 @@
 {% block content %}
 
 <section id="content-wrap" class="site-page">
-        <div class="row">
-            <div class="col-twelve">
- 
-                <section>  
- 
-                    <div class="content-media">						
-                         <img src="{% static 'images/thumbs/about-us.jpg' %}">						  
-                     </div>
- 
-                     <div class="primary-content">
- 
-                         <h1 class="entry-title add-bottom">Learn More About Us.</h1>	
- 
-                         <p class="lead">Akshay to write here.</p> 
- 
-                         <p>Akshay to write here.</p>
-
- 
-                         <div class="row block-1-2 block-tab-full">
-                             <div class="bgrid">
-                                 <h3>Who.</h3>
-                                 <p>Akshay to write here..</p>
-                             </div>
- 
-                             <div class="bgrid">
-                                 <h3>When.</h3>
-                                 <p>Akshay to write here.</p>
-                             </div>
- 
-                         </div>
- 
-                     </div>						
- 
-                 </section>  		
- 
-             </div> <!-- end col-twelve -->
-        </div> <!-- end row -->
-         
-    </section> <!-- end content -->
- 
- 
-
+   <div class="row">
+      <div class="col-twelve">
+         <section>
+            <div class="content-media">						
+               <img src="{% static 'images/thumbs/about-us.jpg' %}">						  
+            </div>
+            <div class="primary-content">
+               <h1 class="entry-title add-bottom">Learn More About Us.</h1>
+               <hr>
+               <p class="lead">Machine Learning Author : Vinayak</p>
+               <div class="row block-1-2 block-tab-full">
+                  <div class="bgrid">
+                     <h3>Who.</h3>
+                     <img src="{% static '/images/avatars/vinayak.jpg' %}" alt="">
+                  </div>
+                  <div class="bgrid">
+                     <h3>What.</h3>
+                     <p>A Machine Learning Enginner with indepth knowledge of 
+                        predictive and deep learning models. I strongly believe that Artificial Intelligence 
+                        would be the last invention that would change the world we live in.
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <hr>
+            <div class="primary-content">
+               <p class="lead">Cloud Author : Akshay Kwatra</p>
+               <div class="row block-1-2 block-tab-full">
+                  <div class="bgrid">
+                     <h3>Who.</h3>
+                     <img src="{% static '/images/avatars/akshay.jpg' %}" alt="">
+                  </div>
+                  <div class="bgrid">
+                     <h3>What.</h3>
+                     <p>A DevOps Engineer with in-depth knowledge of AWS,
+                        Terraform, Chef and Elastic Stack. I'm a diligent, ambitious and a result oriented person. Motto in Life: "Don't downgrade your dream 
+                        just to fit your reality. Upgrade your conviction to match your destiny."
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <hr>
+      </div>
+      </section>  		
+   </div>
+   <!-- end col-twelve -->
+   </div> <!-- end row -->
+</section>
+<!-- end content -->
 {% endblock content %}

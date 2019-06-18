@@ -288,3 +288,12 @@ h6 {
 	margin: 4px 2px;
 	cursor: pointer;
 }
+
+.bgrid img {
+	margin: 0.6rem 0 0 0 !important;
+	width: 16rem;
+	height: 16rem;
+	border-radius: 50%;
+	left: 0;
+	top: 0;
+	}
