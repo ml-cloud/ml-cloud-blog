@@ -17,13 +17,17 @@
             <li class="cat">| {{ post.author }}</li>
          </ul>
          <p class="lead">{{ object.content | safe }}</p>
+         <hr>
          <div class="author-profile">
             {% if post.author|stringformat:"s" == "Vinayak" %}
             <img src="{% static '/images/avatars/Vinayak.jpg' %}" alt="">
             <div class="about">
-               <h4>Vinayak Sharda</h4>
+               <h3>Vinayak Sharda</h3>
+               <blockquote>
                <p>A Machine Learning Engineer with in-depth knowledge of 
                   predictive and deep learning models.
+               </blockquote>
+            </p>
                <ul class="author-social">
                   <li><a href="https://www.linkedin.com/in/vinayak-sharda-16b122118/">Linkedin</a></li>
                   <li><a href="https://github.com/vinayak-sharda">Github</a></li>
@@ -32,9 +36,11 @@
             {% else %}
             <img src="{% static '/images/avatars/Akshay.jpg' %}" alt="">
             <div class="about">
-               <h4>Akshay</h4>
+               <h3>Akshay</h3>
+               <blockquote>
                <p>A DevOps Engineer with in-depth knowledge of AWS,
                   Terraform, Chef and Elastic Stack.
+               </blockquote>
                </p>
                <ul class="author-social">
                <li><a href="https://www.linkedin.com/in/akshay-kwatra-394330167">Linkedin</a></li>
@@ -42,6 +48,7 @@
             </div>
          </div>
          {% endif %}
+      </div>
    </article>
    </div>
    <!-- end col-twelve -->
